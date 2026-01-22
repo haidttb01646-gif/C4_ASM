@@ -1,92 +1,98 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using FastFoodShop.Models;
 
 namespace FastFoodShop.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+            : base(options) { }
 
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<ComboProduct> ComboProducts { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<NguoiDung> NguoiDungs { get; set; }
+        public DbSet<DanhMuc> DanhMucs { get; set; }
+        public DbSet<SanPham> SanPhams { get; set; }
+        public DbSet<DonHang> DonHangs { get; set; }
+        public DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public DbSet<SanPhamCombo> SanPhamCombos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            // Composite key
-            builder.Entity<ComboProduct>()
-                .HasKey(cp => new { cp.ComboId, cp.ProductId });
+            // Khóa chính kép cho bảng combo
+            builder.Entity<SanPhamCombo>()
+                .HasKey(x => new { x.MaCombo, x.MaSanPham });
 
-            // Relationships
-            builder.Entity<Product>()
-                .HasOne(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryId)
+            builder.Entity<SanPhamCombo>()
+                .HasOne(x => x.Combo)
+                .WithMany(s => s.ComboChiTiet)
+                .HasForeignKey(x => x.MaCombo)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<ComboProduct>()
-                .HasOne(cp => cp.Combo)
-                .WithMany(p => p.ComboProducts)
-                .HasForeignKey(cp => cp.ComboId)
+            builder.Entity<SanPhamCombo>()
+                .HasOne(x => x.SanPham)
+                .WithMany(s => s.SanPhamTrongCombo)
+                .HasForeignKey(x => x.MaSanPham)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<ComboProduct>()
-                .HasOne(cp => cp.Product)
-                .WithMany()
-                .HasForeignKey(cp => cp.ProductId)
+            builder.Entity<SanPham>()
+                .HasOne(s => s.DanhMuc)
+                .WithMany(d => d.SanPhams)
+                .HasForeignKey(s => s.DanhMucId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<Order>()
-                .HasOne(o => o.User)
-                .WithMany(u => u.Orders)
-                .HasForeignKey(o => o.UserId)
+            builder.Entity<DonHang>()
+                .HasOne(d => d.NguoiDung)
+                .WithMany(n => n.DonHangs)
+                .HasForeignKey(d => d.NguoiDungId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<OrderDetail>()
-                .HasOne(od => od.Order)
-                .WithMany(o => o.OrderDetails)
-                .HasForeignKey(od => od.OrderId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<ChiTietDonHang>()
+                .HasOne(c => c.DonHang)
+                .WithMany(d => d.ChiTietDonHangs)
+                .HasForeignKey(c => c.DonHangId);
 
-            builder.Entity<OrderDetail>()
-                .HasOne(od => od.Product)
-                .WithMany(p => p.OrderDetails)
-                .HasForeignKey(od => od.ProductId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<ChiTietDonHang>()
+                .HasOne(c => c.SanPham)
+                .WithMany(s => s.ChiTietDonHangs)
+                .HasForeignKey(c => c.SanPhamId);
 
-            // Fixed seed time
-            var seedTime = new DateTime(2026, 01, 01);
-
-            // Seed Categories
-            builder.Entity<Category>().HasData(
-                new Category { CategoryId = 1, Name = "Burgers", Description = "Various types of burgers", IsActive = true, CreatedAt = seedTime },
-                new Category { CategoryId = 2, Name = "Pizza", Description = "Italian style pizza", IsActive = true, CreatedAt = seedTime },
-                new Category { CategoryId = 3, Name = "Drinks", Description = "Cold and hot beverages", IsActive = true, CreatedAt = seedTime },
-                new Category { CategoryId = 4, Name = "Combos", Description = "Special meal packages", IsActive = true, CreatedAt = seedTime }
+            // Seed danh mục
+            builder.Entity<DanhMuc>().HasData(
+                new DanhMuc { Id = 1, TenDanhMuc = "Burger" },
+                new DanhMuc { Id = 2, TenDanhMuc = "Pizza" },
+                new DanhMuc { Id = 3, TenDanhMuc = "Đồ uống" },
+                new DanhMuc { Id = 4, TenDanhMuc = "Combo" }
             );
 
-            // Seed Products
-            builder.Entity<Product>().HasData(
-                new Product { ProductId = 1, Name = "Classic Burger", Description = "Beef burger with cheese and vegetables", Price = 8.99m, ImageUrl = "/images/burger1.jpg", IsAvailable = true, IsCombo = false, CategoryId = 1, CreatedAt = seedTime },
-                new Product { ProductId = 2, Name = "Family Combo", Description = "4 Burgers + 4 Drinks + 1 Large Fries", Price = 35.99m, DiscountPrice = 29.99m, ImageUrl = "/images/combo1.jpg", IsAvailable = true, IsCombo = true, CategoryId = 4, CreatedAt = seedTime },
-                new Product { ProductId = 3, Name = "Pepsi Cola", Description = "Cold Pepsi 330ml", Price = 2.50m, ImageUrl = "/images/pepsi.jpg", IsAvailable = true, IsCombo = false, CategoryId = 3, CreatedAt = seedTime },
-                new Product { ProductId = 4, Name = "Margherita Pizza", Description = "Classic Italian pizza with tomato and mozzarella", Price = 12.99m, ImageUrl = "/images/pizza1.jpg", IsAvailable = true, IsCombo = false, CategoryId = 2, CreatedAt = seedTime },
-                new Product { ProductId = 5, Name = "Chicken Nuggets", Description = "Crispy chicken nuggets with dipping sauce", Price = 6.99m, ImageUrl = "/images/nuggets.jpg", IsAvailable = true, IsCombo = false, CategoryId = 1, CreatedAt = seedTime }
-            );
-
-            // Seed ComboProducts
-            builder.Entity<ComboProduct>().HasData(
-                new ComboProduct { ComboId = 2, ProductId = 1, Quantity = 4 },
-                new ComboProduct { ComboId = 2, ProductId = 3, Quantity = 4 },
-                new ComboProduct { ComboId = 2, ProductId = 5, Quantity = 1 }
+            // Seed sản phẩm
+            builder.Entity<SanPham>().HasData(
+                new SanPham
+                {
+                    Id = 1,
+                    TenSanPham = "Burger Bò Phô Mai",
+                    Gia = 45000,
+                    GiaGiam = 39000,
+                    DanhMucId = 1,
+                    LaCombo = false
+                },
+                new SanPham
+                {
+                    Id = 2,
+                    TenSanPham = "Pizza Hải Sản",
+                    Gia = 120000,
+                    DanhMucId = 2,
+                    LaCombo = false
+                },
+                new SanPham
+                {
+                    Id = 3,
+                    TenSanPham = "Combo Gia Đình",
+                    Gia = 250000,
+                    GiaGiam = 199000,
+                    DanhMucId = 4,
+                    LaCombo = true
+                }
             );
         }
     }
