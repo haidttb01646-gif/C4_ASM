@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Đăng ký tài khoản - F-Drink</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="auth-body">
+    <div class="auth-container" style="max-width: 550px">
+      <a href="login.html" class="auth-back"
+        ><i class="fas fa-arrow-left"></i> Quay lại Đăng nhập</a
+      >
+
+      <div class="auth-box">
+        <div class="auth-header">
+          <i class="fas fa-user-plus"></i>
+          <h2>Tạo tài khoản mới</h2>
+          <p>Gia nhập cộng đồng yêu trà sữa F-Drink</p>
+        </div>
+
+        <form class="auth-form register-form">
+          <div class="form-grid">
+            <div class="input-group">
+              <label>Họ và tên</label>
+              <div class="input-wrapper">
+                <i class="fas fa-id-card"></i>
+                <input type="text" placeholder="Nguyễn Văn A" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Email</label>
+              <div class="input-wrapper">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="example@gmail.com" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Số điện thoại</label>
+              <div class="input-wrapper">
+                <i class="fas fa-phone"></i>
+                <input type="tel" placeholder="090xxxxxxx" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Địa chỉ</label>
+              <div class="input-wrapper">
+                <i class="fas fa-map-marker-alt"></i>
+                <input
+                  type="text"
+                  placeholder="Số nhà, tên đường..."
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Mật khẩu</label>
+              <div class="input-wrapper">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="••••••••" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Xác nhận mật khẩu</label>
+              <div class="input-wrapper">
+                <i class="fas fa-shield-alt"></i>
+                <input type="password" placeholder="••••••••" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-options" style="margin-bottom: 15px">
+            <label style="cursor: pointer">
+              <input type="checkbox" required /> Tôi đồng ý với Điều khoản sử
+              dụng
+            </label>
+          </div>
+
+          <button type="submit" class="btn-auth-main">ĐĂNG KÝ NGAY</button>
+
+          <div class="auth-divider"><span>Hoặc đăng ký bằng</span></div>
+
+          <button type="button" class="btn-google">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+              alt="Google"
+            />
+            Đăng ký với Google
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Đã có tài khoản? <a href="login.html">Đăng nhập</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

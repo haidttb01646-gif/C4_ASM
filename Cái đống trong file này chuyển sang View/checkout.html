@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thanh toán đơn hàng - F-Drink</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside class="sidebar">
+        <div class="logo"><i class="fas fa-mug-hot"></i> F-DRINK</div>
+        <div class="sidebar-section">
+          <ul>
+            <li>
+              <a href="cart.html" style="text-decoration: none; color: inherit"
+                ><i class="fas fa-arrow-left"></i> Quay lại giỏ hàng</a
+              >
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <h2 class="section-title">Xác nhận thanh toán</h2>
+
+        <div class="checkout-container">
+          <div class="checkout-form-section">
+            <div class="checkout-card">
+              <h3><i class="fas fa-map-marker-alt"></i> Thông tin giao hàng</h3>
+              <div class="form-grid">
+                <div class="input-group">
+                  <label>Họ và tên người nhận</label>
+                  <input
+                    type="text"
+                    placeholder="Nhập tên người nhận..."
+                    required
+                  />
+                </div>
+                <div class="input-group">
+                  <label>Số điện thoại</label>
+                  <input
+                    type="tel"
+                    placeholder="Nhập số điện thoại..."
+                    required
+                  />
+                </div>
+                <div class="input-group" style="grid-column: span 2">
+                  <label>Địa chỉ nhận hàng</label>
+                  <input
+                    type="text"
+                    placeholder="Số nhà, tên đường, phường/xã..."
+                    required
+                  />
+                </div>
+                <div class="input-group" style="grid-column: span 2">
+                  <label>Ghi chú đơn hàng</label>
+                  <textarea
+                    placeholder="Ví dụ: Giao giờ hành chính, ít đá để riêng..."
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-card" style="margin-top: 20px">
+              <h3><i class="fas fa-credit-card"></i> Phương thức thanh toán</h3>
+              <div class="payment-methods">
+                <label class="payment-item">
+                  <input type="radio" name="payment" checked />
+                  <span class="payment-text"
+                    ><i class="fas fa-money-bill-wave"></i> Tiền mặt khi nhận
+                    hàng (COD)</span
+                  >
+                </label>
+                <label class="payment-item">
+                  <input type="radio" name="payment" />
+                  <span class="payment-text"
+                    ><i class="fas fa-university"></i> Chuyển khoản ngân
+                    hàng</span
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-summary-section">
+            <div class="summary-card">
+              <h3>Đơn hàng của bạn</h3>
+              <div class="summary-items">
+                <div class="s-item">
+                  <span>Trà sữa Trân châu (x1)</span>
+                  <span>35.000đ</span>
+                </div>
+                <div class="s-item">
+                  <span>Cà phê Muối (x2)</span>
+                  <span>58.000đ</span>
+                </div>
+              </div>
+              <hr />
+              <div class="summary-line">
+                <span>Tạm tính</span>
+                <span>93.000đ</span>
+              </div>
+              <div class="summary-line">
+                <span>Phí vận chuyển</span>
+                <span>15.000đ</span>
+              </div>
+              <div class="summary-line total-line">
+                <span>TỔNG CỘNG</span>
+                <span>108.000đ</span>
+              </div>
+              <button class="btn-order-confirm">XÁC NHẬN ĐẶT HÀNG</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

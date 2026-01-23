@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Giỏ hàng của bạn - F-Drink</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside class="sidebar">
+        <div class="logo"><i class="fas fa-mug-hot"></i> F-DRINK</div>
+        <div class="sidebar-section">
+          <ul>
+            <li>
+              <a href="index.html" style="text-decoration: none; color: inherit"
+                ><i class="fas fa-home"></i> Quay lại menu</a
+              >
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <h2 class="section-title">Giỏ hàng của bạn</h2>
+
+        <div class="cart-container">
+          <div class="cart-items">
+            <div class="cart-item">
+              <div class="item-img"><i class="fas fa-glass-whiskey"></i></div>
+              <div class="item-info">
+                <h4>Trà sữa Trân châu</h4>
+                <p>Size M, 50% đường, 50% đá</p>
+              </div>
+              <div class="item-qty">
+                <button>-</button>
+                <input type="number" value="1" />
+                <button>+</button>
+              </div>
+              <div class="item-price">35.000đ</div>
+              <button class="remove-item"><i class="fas fa-trash"></i></button>
+            </div>
+
+            <div class="cart-item">
+              <div class="item-img"><i class="fas fa-coffee"></i></div>
+              <div class="item-info">
+                <h4>Cà phê Muối</h4>
+                <p>Size L, Ít đá</p>
+              </div>
+              <div class="item-qty">
+                <button>-</button>
+                <input type="number" value="2" />
+                <button>+</button>
+              </div>
+              <div class="item-price">58.000đ</div>
+              <button class="remove-item"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+
+          <div class="cart-summary">
+            <h3>Tổng thanh toán</h3>
+            <hr />
+            <div class="summary-line total">
+              <span>Tổng cộng:</span>
+              <span class="total-price">108.000đ</span>
+            </div>
+
+            <a
+              href="checkout.html"
+              class="btn-checkout"
+              style="display: block; text-align: center; text-decoration: none"
+            >
+              THANH TOÁN NGAY
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quản trị hệ thống - F-Drink</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside class="sidebar admin-sidebar">
+        <div class="logo"><i class="fas fa-user-shield"></i> ADMIN CP</div>
+        <div class="sidebar-section">
+          <ul>
+            <li class="active"><i class="fas fa-box"></i> Quản lý sản phẩm</li>
+            <li><i class="fas fa-shopping-bag"></i> Quản lý đơn hàng</li>
+            <li><i class="fas fa-users"></i> Quản lý người dùng</li>
+            <li style="margin-top: 50px">
+              <a href="index.html" style="text-decoration: none; color: inherit"
+                ><i class="fas fa-sign-out-alt"></i> Thoát</a
+              >
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header>
+          <h2 class="section-title">Danh sách món nước</h2>
+          <button class="btn-add-new">
+            <i class="fas fa-plus"></i> Thêm món mới
+          </button>
+        </header>
+
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Hình ảnh</th>
+                <th>Tên món</th>
+                <th>Danh mục</th>
+                <th>Giá tiền</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#01</td>
+                <td>
+                  <div class="table-img">
+                    <i class="fas fa-glass-whiskey"></i>
+                  </div>
+                </td>
+                <td>Trà sữa Trân châu</td>
+                <td>Trà sữa</td>
+                <td>35.000đ</td>
+                <td>
+                  <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                  <button class="btn-delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>#02</td>
+                <td>
+                  <div class="table-img"><i class="fas fa-coffee"></i></div>
+                </td>
+                <td>Cà phê Muối</td>
+                <td>Cà phê</td>
+                <td>29.000đ</td>
+                <td>
+                  <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                  <button class="btn-delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

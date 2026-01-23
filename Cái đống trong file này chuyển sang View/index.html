@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>F-Drink | Menu 12 Món</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside class="sidebar">
+        <div class="logo"><i class="fas fa-mug-hot"></i> F-DRINK</div>
+        <div class="sidebar-section">
+          <h3>Danh mục</h3>
+          <ul>
+            <li class="active"><i class="fas fa-leaf"></i> Trà sữa</li>
+            <li><i class="fas fa-coffee"></i> Cà phê</li>
+            <li><i class="fas fa-glass-whiskey"></i> Sinh tố</li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h3>Lọc theo giá</h3>
+          <input type="range" min="20" max="150" style="width: 100%" />
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              font-size: 12px;
+              margin-top: 5px;
+            "
+          >
+            <span>20k</span><span>150k</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header>
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Tìm món nước..." />
+          </div>
+          <div class="header-right">
+            <a href="cart.html" class="cart-btn">
+              <i class="fas fa-shopping-cart"></i> Giỏ hàng
+              <span class="cart-count">0</span>
+            </a>
+            <div class="auth-btns">
+              <a href="login.html" class="btn-login">Đăng nhập</a>
+              <a href="register.html" class="btn-reg">Đăng ký</a>
+            </div>
+          </div>
+        </header>
+
+        <div class="product-grid" id="productGrid"></div>
+      </main>
+    </div>
+
+    <script>
+      const menu = [
+        "Trà sữa Trân châu",
+        "Cà phê Muối",
+        "Trà Lài Sen",
+        "Sữa tươi Đường đen",
+        "Matcha Đá Xay",
+        "Nước ép Cam Đào",
+        "Trà Sữa Khoai Môn",
+        "Bạc Xỉu Cốt Dừa",
+        "Sinh tố Bơ",
+        "Trà Đào Cam Sả",
+        "Cà phê Đen",
+        "Sữa tươi Trân châu trắng",
+      ];
+      const grid = document.getElementById("productGrid");
+      menu.forEach((name) => {
+        grid.innerHTML += `
+                <div class="product-card">
+                    <div class="product-img"><i class="fas fa-glass-whiskey"></i></div>
+                    <h4>${name}</h4>
+                    <p class="price">35.000đ</p>
+                    <div class="product-btns">
+                        <a href="detail.html" class="btn-view">Chi tiết</a>
+                        <button class="btn-add">Thêm +</button>
+                    </div>
+                </div>`;
+      });
+    </script>
+  </body>
+</html>
